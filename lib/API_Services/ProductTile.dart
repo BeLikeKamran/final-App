@@ -50,7 +50,7 @@ class ProductTile extends StatelessWidget {
               product.name,
               maxLines: 2,
               style:
-                  TextStyle(fontFamily: 'avenir', fontWeight: FontWeight.w800),
+                  TextStyle( fontWeight: FontWeight.w800),
               overflow: TextOverflow.ellipsis,
             ),
             SizedBox(height: 8),
@@ -78,7 +78,7 @@ class ProductTile extends StatelessWidget {
               ),
             SizedBox(height: 8),
             Text('\$${product.price}',
-                style: TextStyle(fontSize: 32, fontFamily: 'avenir')),
+                style: TextStyle(fontSize: 32,)),
           ],
         ),
       ),

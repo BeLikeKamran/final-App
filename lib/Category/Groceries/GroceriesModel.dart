@@ -1,34 +1,83 @@
-class Groceries {
-  Groceries({this.rating, this.imageLink, this.currency, this.name});
-  final String name;
-  final String rating;
-  final String imageLink;
-  final String currency;
+import 'package:flutter/material.dart';
 
-  List<Groceries> groceries = [
-    new Groceries(
-      name: '',
-      imageLink: '',
-      rating: '',
-      currency: '',
-    ),
-    new Groceries(
-      name: '',
-      imageLink: '',
-      rating: '',
-      currency: '',
-    ),
-    new Groceries(
-      name: '',
-      imageLink: '',
-      rating: '',
-      currency: '',
-    ),
-    new Groceries(
-      name: '',
-      imageLink: '',
-      rating: '',
-      currency: '',
-    )
-  ];
+class Groceries extends StatefulWidget {
+  const Groceries({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  State<Groceries> createState() => _GroceriesState();
+}
+
+class _GroceriesState extends State<Groceries> {
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      elevation: 2,
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Stack(
+              children: [
+                Container(
+                  height: 180,
+                  width: double.infinity,
+                  clipBehavior: Clip.antiAlias,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(4),
+                  ),
+                  child: Image.network(
+                    "https://5.imimg.com/data5/BM/DV/KV/ANDROID-92423289/product-jpeg-500x500.jpg",
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                Positioned(
+                  right: 0,
+                  child: CircleAvatar(
+                    backgroundColor: Colors.white,
+                  ),
+                )
+              ],
+            ),
+            SizedBox(height: 8),
+            Text(
+              "Groceries",
+              maxLines: 2,
+              style: TextStyle(fontWeight: FontWeight.w800),
+              overflow: TextOverflow.ellipsis,
+            ),
+            SizedBox(height: 8),
+            Container(
+              decoration: BoxDecoration(
+                color: Colors.green,
+                borderRadius: BorderRadius.circular(12),
+              ),
+              padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    4.5.toString(),
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  Icon(
+                    Icons.star,
+                    size: 16,
+                    color: Colors.white,
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(height: 8),
+            Text('\$${70.8}',
+                style: TextStyle(
+                  fontSize: 32,
+                )),
+          ],
+        ),
+      ),
+    );
+  }
 }

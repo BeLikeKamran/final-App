@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
-class Electronic extends StatefulWidget {
-  const Electronic({
+class Clothes extends StatefulWidget {
+  const Clothes({
     Key key,
   }) : super(key: key);
 
   @override
-  State<Electronic> createState() => _ElectronicState();
+  State<Clothes> createState() => _ClothesState();
 }
 
-class _ElectronicState extends State<Electronic> {
+class _ClothesState extends State<Clothes> {
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -29,7 +29,7 @@ class _ElectronicState extends State<Electronic> {
                     borderRadius: BorderRadius.circular(4),
                   ),
                   child: Image.network(
-                    "https://adnjxlogdq.cloudimg.io/v7/https://www.ishopping.pk/media/catalog/product/cache/1/image/1200x/9df78eab33525d08d6e5fb8d27136e95/a/p/apollo_32_hd_smart_led_tv.jpg",
+                    "https://static-01.daraz.pk/p/09d8a47b2f1f52ceb7689f65af7a1d37.jpg",
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -43,7 +43,7 @@ class _ElectronicState extends State<Electronic> {
             ),
             SizedBox(height: 8),
             Text(
-              "Apollo 32 HD Smart LED ",
+              "Baby Boy clothes",
               maxLines: 2,
               style: TextStyle(fontWeight: FontWeight.w800),
               overflow: TextOverflow.ellipsis,

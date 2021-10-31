@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
-class Electronic extends StatefulWidget {
-  const Electronic({
+class AutoMobiles extends StatefulWidget {
+  const AutoMobiles({
     Key key,
   }) : super(key: key);
 
   @override
-  State<Electronic> createState() => _ElectronicState();
+  State<AutoMobiles> createState() => _AutoMobilesState();
 }
 
-class _ElectronicState extends State<Electronic> {
+class _AutoMobilesState extends State<AutoMobiles> {
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -29,7 +29,7 @@ class _ElectronicState extends State<Electronic> {
                     borderRadius: BorderRadius.circular(4),
                   ),
                   child: Image.network(
-                    "https://adnjxlogdq.cloudimg.io/v7/https://www.ishopping.pk/media/catalog/product/cache/1/image/1200x/9df78eab33525d08d6e5fb8d27136e95/a/p/apollo_32_hd_smart_led_tv.jpg",
+                    "https://cache4.pakwheels.com/ad_pictures/5834/Slide_toyota-corolla-gli-vvti-2017-58346943.jpg",
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -43,7 +43,7 @@ class _ElectronicState extends State<Electronic> {
             ),
             SizedBox(height: 8),
             Text(
-              "Apollo 32 HD Smart LED ",
+              "Slide_toyota-corolla",
               maxLines: 2,
               style: TextStyle(fontWeight: FontWeight.w800),
               overflow: TextOverflow.ellipsis,

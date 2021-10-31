@@ -1,12 +1,16 @@
 import 'package:carousel_pro/carousel_pro.dart';
 import 'package:flutter/material.dart';
-import 'package:kamran/Category/Eletronics/ElectricModel.dart';
+import 'package:kamran/Category/AutoMobile/AutoMobiles.dart';
+import 'package:kamran/Category/Clothes/Clothes.dart';
 import 'package:kamran/Category/Eletronics/Electronic.dart';
-import 'package:kamran/Pages/MakeUp.dart';
+import 'package:kamran/Category/Groceries/GroceriesModel.dart';
+import 'package:kamran/Category/MakeUP/MakeUp.dart';
+import 'package:kamran/Category/Mobile/MobileModel.dart';
 
 class GridListView extends StatefulWidget {
-  const GridListView({Key key, this.electric}) : super(key: key);
-  final Electric electric;
+  const GridListView({
+    Key key,
+  }) : super(key: key);
 
   @override
   _GridListViewState createState() => _GridListViewState();
@@ -62,9 +66,7 @@ class _GridListViewState extends State<GridListView> {
                       InkWell(
                         onTap: () {
                           Navigator.of(context).push(MaterialPageRoute(
-                              builder: (builder) => Electronic(
-                                    ele: widget.electric,
-                                  )));
+                              builder: (builder) => Electronic()));
                         },
                         borderRadius: BorderRadius.circular(15),
                         child: CircleAvatar(
@@ -76,7 +78,10 @@ class _GridListViewState extends State<GridListView> {
                   Column(
                     children: [
                       InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (builder) => AutoMobiles()));
+                        },
                         borderRadius: BorderRadius.circular(15),
                         child: CircleAvatar(
                           radius: 27,
@@ -89,7 +94,10 @@ class _GridListViewState extends State<GridListView> {
                   Column(
                     children: [
                       InkWell(
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (builder) => Mobiles()));
+                          },
                           borderRadius: BorderRadius.circular(15),
                           child: CircleAvatar(
                               radius: 27, child: Icon(Icons.smartphone))),
@@ -107,7 +115,10 @@ class _GridListViewState extends State<GridListView> {
                 Column(
                   children: [
                     InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (builder) => Groceries()));
+                      },
                       borderRadius: BorderRadius.circular(15),
                       child: CircleAvatar(
                         radius: 27,
@@ -136,7 +147,10 @@ class _GridListViewState extends State<GridListView> {
                 Column(
                   children: [
                     InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.of(context).push(
+                            MaterialPageRoute(builder: (builder) => Clothes()));
+                      },
                       borderRadius: BorderRadius.circular(15),
                       child: CircleAvatar(
                         radius: 27,

@@ -23,7 +23,11 @@ class _FvrtScreeenState extends State<FvrtScreeen> {
         ),
         drawer: Drwer(),
         body: Container(
-          child: Text("Favorite"),
+          child: Center(
+              child: Text(
+            "You must login to add favorite",
+            style: TextStyle(fontSize: 20),
+          )),
         ));
   }
 }

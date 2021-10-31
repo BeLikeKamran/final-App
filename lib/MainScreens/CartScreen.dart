@@ -23,7 +23,11 @@ class _CartScreenState extends State<CartScreen> {
         ),
         drawer: Drwer(),
         body: Container(
-          child: Text("Cart"),
+          child: Center(
+              child: Text(
+            "You must login to add orders",
+            style: TextStyle(fontSize: 20),
+          )),
         ));
   }
 }
