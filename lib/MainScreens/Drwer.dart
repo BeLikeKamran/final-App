@@ -19,74 +19,83 @@ class _DrwerState extends State<Drwer> {
     CollectionReference users = FirebaseFirestore.instance.collection('users');
     final user = FirebaseAuth.instance.currentUser;
 
-    return Container(
-        height: MediaQuery.of(context).size.height,
-        width: MediaQuery.of(context).size.width - 120,
-        child: Drawer(
-            child: Column(
-          children: [
-            FutureBuilder<DocumentSnapshot>(
-              future: users
-                  .doc(
-                    user.email, //colection me email use kia hai uid ki jaga is laiy //
-                  )
-                  .get(),
-              builder: (BuildContext context,
-                  AsyncSnapshot<DocumentSnapshot> snapshot) {
-                if (snapshot.hasError) {
-                  return UserAccountsDrawerHeader(
-                    currentAccountPictureSize: Size.fromRadius(30),
-                    currentAccountPicture: CircleAvatar(
-                        child: CircleAvatar(
-                      radius: 8,
-                      child: CircularProgressIndicator(
-                        strokeWidth: 2,
-                        color: Colors.white,
-                      ),
-                    )),
-                    accountName: Text(""),
-                    accountEmail: Text(""),
-                  );
-                }
+    if (FirebaseAuth.instance.currentUser == null) {
+      return Drawer(
+          child: Center(
+        child: CircularProgressIndicator(
+          semanticsLabel: 'Waiting',
+          semanticsValue: 'Wait',
+        ),
+      ));
+    } else
+      return Container(
+          height: MediaQuery.of(context).size.height,
+          width: MediaQuery.of(context).size.width - 120,
+          child: Drawer(
+              child: Column(
+            children: [
+              FutureBuilder<DocumentSnapshot>(
+                future: users
+                    .doc(
+                      user.email, //colection me email use kia hai uid ki jaga is laiy //
+                    )
+                    .get(),
+                builder: (BuildContext context,
+                    AsyncSnapshot<DocumentSnapshot> snapshot) {
+                  if (snapshot.hasError) {
+                    return UserAccountsDrawerHeader(
+                      currentAccountPictureSize: Size.fromRadius(30),
+                      currentAccountPicture: CircleAvatar(
+                          child: CircleAvatar(
+                        radius: 8,
+                        child: CircularProgressIndicator(
+                          strokeWidth: 2,
+                          color: Colors.white,
+                        ),
+                      )),
+                      accountName: Text(""),
+                      accountEmail: Text(""),
+                    );
+                  }
 
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return UserAccountsDrawerHeader(
-                    currentAccountPictureSize: Size.fromRadius(30),
-                    currentAccountPicture: CircleAvatar(
-                        child: CircleAvatar(
-                      radius: 8,
-                      child: CircularProgressIndicator(
-                        color: Colors.white,
-                      ),
-                    )),
-                    accountName: Text(""),
-                    accountEmail: Text(""),
-                  );
-                }
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return UserAccountsDrawerHeader(
+                      currentAccountPictureSize: Size.fromRadius(30),
+                      currentAccountPicture: CircleAvatar(
+                          child: CircleAvatar(
+                        radius: 8,
+                        child: CircularProgressIndicator(
+                          color: Colors.white,
+                        ),
+                      )),
+                      accountName: Text(""),
+                      accountEmail: Text(""),
+                    );
+                  }
 
-                if (snapshot.connectionState == ConnectionState.done) {
-                  Map<String, dynamic> data = snapshot.data.data();
-                  return UserAccountsDrawerHeader(
-                    currentAccountPictureSize: Size.fromRadius(30),
-                    // otherAccountsPicturesSize: Size.fromRadius(20),
-                    currentAccountPicture: CircleAvatar(
-                        backgroundImage: NetworkImage(data["profile"])),
-                    // otherAccountsPictures: [
-                    //   CircleAvatar(
-                    //       backgroundImage: AssetImage("assets/Iron Man.jpg")),
-                    //   CircleAvatar(
-                    //       backgroundImage: AssetImage("assets/The Hulk.jpg"))
-                    // ],
+                  if (snapshot.connectionState == ConnectionState.done) {
+                    Map<String, dynamic> data = snapshot.data.data();
+                    return UserAccountsDrawerHeader(
+                      currentAccountPictureSize: Size.fromRadius(30),
+                      // otherAccountsPicturesSize: Size.fromRadius(20),
+                      currentAccountPicture: CircleAvatar(
+                          backgroundImage: NetworkImage(data["profile"])),
+                      // otherAccountsPictures: [
+                      //   CircleAvatar(
+                      //       backgroundImage: AssetImage("assets/Iron Man.jpg")),
+                      //   CircleAvatar(
+                      //       backgroundImage: AssetImage("assets/The Hulk.jpg"))
+                      // ],
 
-                    accountName: Text(data['username']),
-                    accountEmail: Text(data["email"]),
-                  );
-                }
+                      accountName: Text(data['username']),
+                      accountEmail: Text(data["email"]),
+                    );
+                  }
 
-                return Container();
-              },
-            ),
-          ],
-        )));
+                  return Container();
+                },
+              ),
+            ],
+          )));
   }
 }
